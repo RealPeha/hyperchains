@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+body,
+#root {
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
