@@ -15,6 +15,7 @@ import { getChainTags } from './utils';
 import { Text } from './components/Text';
 import { Oval } from 'react-loader-spinner';
 import { GithubRegistry } from '@hyperlane-xyz/registry';
+import { FaGithub } from 'react-icons/fa';
 
 export const App = () => {
   const [chains, setChains] = useState<ChainMetadata[]>([]);
@@ -98,13 +99,30 @@ export const App = () => {
                 Hyperlane Chains
               </Text>
             </Flex>
-            <Text color="#6f6f6f" size={18}>
-              A list of chains supported by{' '}
-              <a href="https://hyperlane.xyz" target="_blank">
-                Hyperlane
-              </a>{' '}
-              protocol
-            </Text>
+            <Flex center="y">
+              <Flex grow>
+                <Text color="#6f6f6f" size={18}>
+                  A list of chains supported by{' '}
+                  <a href="https://hyperlane.xyz" target="_blank">
+                    Hyperlane
+                  </a>{' '}
+                  protocol
+                </Text>
+              </Flex>
+              <GithubLink center="y" gap="5px" style={{ marginRight: '270px' }}>
+                <a
+                  href="https://github.com/RealPeha/hyperchains"
+                  target="_blank"
+                >
+                  <Flex center="y" gap="5px">
+                    <FaGithub size={16} color="#202020" />
+                    <Text weight="bold" color="#202020">
+                      RealPeha/hyperchains
+                    </Text>
+                  </Flex>
+                </a>
+              </GithubLink>
+            </Flex>
           </Flex>
           <Flex center="y" gap="10px">
             <Search value={value} onChange={handleSearchChange} />
@@ -170,7 +188,7 @@ export const App = () => {
       </Content>
       <Flex center="y" gap="5px">
         <Text color="#6f6f6f">Brought to life by</Text>
-        <Author center="y" gap="5px">
+        <GithubLink center="y" gap="5px">
           <a href="https://github.com/RealPeha" target="_blank">
             <Flex center="y" gap="5px">
               <AuthorLogo
@@ -178,12 +196,12 @@ export const App = () => {
                 height={24}
                 src="https://avatars.githubusercontent.com/u/26817340"
               />
-              <Text weight="bold" color="#111111">
+              <Text weight="bold" color="#202020">
                 RealPeha
               </Text>
             </Flex>
           </a>
-        </Author>
+        </GithubLink>
       </Flex>
       <AnimatePresence initial={false}>
         {open && selectedChain && (
@@ -227,7 +245,7 @@ const Header = styled(Flex)`
   max-width: 1000px;
 `;
 
-const Author = styled(Flex)`
+const GithubLink = styled(Flex)`
   border-radius: 10px;
   padding: 3px 6px 3px 0;
   transition: background 0.3s;
