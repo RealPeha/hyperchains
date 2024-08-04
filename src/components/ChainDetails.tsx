@@ -11,6 +11,7 @@ import { Tag } from './Tag';
 import { Copy } from './Copy';
 import { Address } from './Address';
 import { Scrollable } from './Scrollable';
+import { ChainTag } from '../constants';
 
 type ChainAddresses = (typeof chainAddresses)[keyof typeof chainAddresses];
 
@@ -77,7 +78,16 @@ export const ChainDetails = forwardRef<HTMLDivElement, ChainDetailsProps>(
                     {hasDifferentDomainId ? 'Chain ID' : 'Chain/Domain ID'}
                   </Text>
                   <Flex center>
-                    <Text size={18}>{chain.chainId}</Text>
+                    <a
+                      href={
+                        tags.includes(ChainTag.EVM)
+                          ? `https://chainlist.org/chain/${chain.chainId}`
+                          : undefined
+                      }
+                      target="_blank"
+                    >
+                      <Text size={18}>{chain.chainId}</Text>
+                    </a>
                     <Copy value={chain.chainId} />
                   </Flex>
                 </Flex>
