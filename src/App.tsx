@@ -129,7 +129,15 @@ export const App = () => {
             <TagSelect value={filterTag} onChange={setFilterTag} />
           </Flex>
         </Header>
-        <Space height="70px" />
+        <Space height="35px" />
+        <Flex alignSelf="flex-end" padding="0 10px 0 0">
+          {filteredChains.length && (
+            <Text color="#6f6f6f" size={20}>
+              {filteredChains.length} chains
+            </Text>
+          )}
+        </Flex>
+        <Space height="20px" />
         <Flex wrap gap="30px" grow={!filteredChains.length} center="x">
           <AnimatePresence initial={false} mode="popLayout">
             {filteredChains.length ? (
