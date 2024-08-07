@@ -11,7 +11,7 @@ export const getChainTags = (chain: ChainMetadata): ChainTag[] => {
     tags.push(ChainTag.Mainnet);
   }
 
-  if (chain.name in CoreChain) {
+  if (chain.name in CoreChain || chain.deployer?.name === 'Abacus Works') {
     tags.push(ChainTag.Core);
   } else {
     tags.push(ChainTag.Community);
