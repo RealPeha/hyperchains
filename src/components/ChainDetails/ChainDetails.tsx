@@ -1,6 +1,5 @@
 import { forwardRef, useEffect } from 'react';
-import { ChainMetadata } from '@hyperlane-xyz/sdk';
-import { chainAddresses, warpRouteConfigs } from '@hyperlane-xyz/registry';
+import type { ChainMetadata } from '@hyperlane-xyz/sdk';
 import styled from '@emotion/styled';
 import { HTMLMotionProps, motion } from 'framer-motion';
 import { Flex } from '../Flex';
@@ -14,6 +13,7 @@ import { ChainWarpRoutes } from './ChainWarpRoutes';
 import { useUrlState } from '../../hooks';
 import { ChainInfo } from './ChainInfo';
 import { Copy } from '../Copy';
+import { useStore } from '../../store';
 
 interface ChainDetailsProps {
   chain: ChainMetadata;
@@ -38,6 +38,9 @@ type TabId = (typeof tabs)[number]['id'];
 
 export const ChainDetails = forwardRef<HTMLDivElement, ChainDetailsProps>(
   ({ chain }, ref) => {
+    const getAddresses = useStore.use.getAddresses();
+    const getWarpRoutes = useStore.use.getWarpRoutes();
+
     const [activeTab, setActiveTab] = useUrlState<TabId>('tab', 'info');
 
     const tags = getChainTags(chain);
@@ -46,10 +49,10 @@ export const ChainDetails = forwardRef<HTMLDivElement, ChainDetailsProps>(
       return () => setActiveTab('info', false);
     }, []);
 
-    const withAddresses = chain.name in chainAddresses;
-    const withWarpRoutes =
-      Object.keys(warpRouteConfigs).filter((id) => id.includes(chain.name))
-        .length > 0;
+    const addresses = getAddresses(chain.name);
+
+    const withAddresses = !!addresses;
+    const withWarpRoutes = getWarpRoutes(chain.name).warpRoutesArray.length > 0;
 
     const renderTabs: Record<TabId, boolean> = {
       info: withAddresses || withWarpRoutes,
@@ -104,7 +107,7 @@ export const ChainDetails = forwardRef<HTMLDivElement, ChainDetailsProps>(
                           {tab.id === 'addresses' && (
                             <Copy
                               value={JSON.stringify(
-                                (chainAddresses as any)[chain.name],
+                                addresses?.[chain.name],
                                 null,
                                 2,
                               )}

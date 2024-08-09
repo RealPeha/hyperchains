@@ -1,21 +1,18 @@
 import React from 'react';
-import { warpRouteConfigs } from '@hyperlane-xyz/registry';
-import { ChainMetadata } from '@hyperlane-xyz/sdk';
+import type { ChainMetadata } from '@hyperlane-xyz/sdk';
 import { Flex } from '../Flex';
 import { Token } from '../Token';
 import { FaLongArrowAltRight } from 'react-icons/fa';
+import { useStore } from '../../store';
 
 interface ChainWarpRoutesProps {
   chain: ChainMetadata;
 }
 
 export const ChainWarpRoutes: React.FC<ChainWarpRoutesProps> = ({ chain }) => {
-  const warpRoutesArray = Object.entries(warpRouteConfigs).filter(([id]) =>
-    id.includes(chain.name),
+  const { warpRoutesArray, warpRoutes } = useStore.use.getWarpRoutes()(
+    chain.name,
   );
-  const warpRoutes = Object.fromEntries(warpRoutesArray);
-
-  console.log(warpRoutes);
 
   if (!warpRoutesArray.length) {
     return null;

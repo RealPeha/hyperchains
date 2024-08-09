@@ -10,7 +10,7 @@ import { Space } from './components/Space';
 import { TagSelect } from './components/TagSelect';
 import { useUrlState } from './hooks';
 import { ChainDetails } from './components/ChainDetails';
-import { ChainMetadata } from '@hyperlane-xyz/sdk';
+import type { ChainMetadata } from '@hyperlane-xyz/sdk';
 import { getChainTags } from './utils';
 import { Text } from './components/Text';
 import { Oval } from 'react-loader-spinner';
@@ -19,7 +19,7 @@ import { useStore } from './store';
 
 export const Chains = () => {
   const chains = useStore.use.chains();
-  const chainsIsLoading = useStore.use.chainsIsLoading();
+  const isLoading = useStore.use.isLoading();
   const getChain = useStore.use.getChain();
 
   const [selectedChainName, setSelectedChainName] = useUrlState<string>(
@@ -158,7 +158,7 @@ export const Chains = () => {
                     duration: 0.3,
                   }}
                 >
-                  {chainsIsLoading ? (
+                  {isLoading ? (
                     <Oval
                       color="#2362c0"
                       secondaryColor="#4992ff"

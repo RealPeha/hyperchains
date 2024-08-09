@@ -1,11 +1,9 @@
-import { chainAddresses } from '@hyperlane-xyz/registry';
-import { ChainMetadata } from '@hyperlane-xyz/sdk';
+import type { ChainMetadata } from '@hyperlane-xyz/sdk';
 import React from 'react';
 import { Flex } from '../Flex';
 import { Text } from '../Text';
 import { Address } from '../Address';
-
-type ChainAddressesType = (typeof chainAddresses)[keyof typeof chainAddresses];
+import { useStore } from '../../store';
 
 const convertIdToTitle = (id: string) => {
   return id
@@ -20,10 +18,7 @@ interface ChainAddressesProps {
 }
 
 export const ChainAddresses: React.FC<ChainAddressesProps> = ({ chain }) => {
-  const addresses = chainAddresses[
-    chain.name as keyof typeof chainAddresses
-  ] as ChainAddressesType | undefined;
-
+  const addresses = useStore.use.getAddresses()(chain.name);
   const explorer = chain.blockExplorers && chain.blockExplorers[0];
 
   if (!addresses) {

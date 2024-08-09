@@ -1,4 +1,4 @@
-import { ChainMetadata } from '@hyperlane-xyz/sdk';
+import type { ChainMetadata } from '@hyperlane-xyz/sdk';
 import React from 'react';
 import { Flex } from './Flex';
 import styled from '@emotion/styled';

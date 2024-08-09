@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { warpRouteConfigs } from '@hyperlane-xyz/registry';
 import React from 'react';
 import { Flex } from './Flex';
 import { Text } from './Text';
@@ -7,9 +6,10 @@ import { ChainLogo } from './ChainLogo';
 import { getChainTags } from '../utils';
 import { ChainTag } from '../constants';
 import { useStore } from '../store';
+import { WarpToken } from '../types';
 
 interface TokenProps {
-  token: (typeof warpRouteConfigs)[string]['tokens'][number];
+  token: WarpToken;
   withChain?: boolean;
   size?: number;
 }
@@ -25,7 +25,7 @@ export const Token: React.FC<TokenProps> = ({
     const chain = getChain(token.chainName);
     const explorer = chain?.blockExplorers && chain.blockExplorers[0];
 
-    if (!explorer) {
+    if (!explorer || !token.addressOrDenom) {
       return undefined;
     }
 

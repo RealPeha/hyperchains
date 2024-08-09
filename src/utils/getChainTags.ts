@@ -1,4 +1,4 @@
-import { ChainMetadata } from '@hyperlane-xyz/sdk';
+import type { ChainMetadata } from '@hyperlane-xyz/sdk';
 import { ChainTag, protocolToTag } from '../constants';
 import { CoreChain } from '@hyperlane-xyz/registry';
 

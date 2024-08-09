@@ -1,11 +1,3 @@
-import { chainAddresses, chainMetadata } from '@hyperlane-xyz/registry';
-
-export const chains = Object.values(chainMetadata).sort(
-  (a, b) => Number(a.chainId) - Number(b.chainId),
-);
-
-export const addresses = chainAddresses;
-
 export enum ChainTag {
   All = 'All',
   Mainnet = 'Mainnet',

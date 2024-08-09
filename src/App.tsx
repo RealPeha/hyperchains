@@ -2,7 +2,7 @@ import { Route, Switch } from 'wouter';
 import { useStore } from './store';
 import { Chains } from './Chains';
 
-useStore.getState().loadChains();
+useStore.getState().load();
 
 export const App = () => {
   return (
