@@ -6,6 +6,7 @@ import { Tag } from './Tag';
 import { ChainTag } from '../constants';
 import { Text } from './Text';
 import { getChainTags } from '../utils';
+import { ChainLogo } from './ChainLogo';
 
 interface ChainCardProps {
   chain: ChainMetadata;
@@ -22,10 +23,7 @@ export const ChainCard: React.FC<ChainCardProps> = ({ chain, onClick }) => {
     <Card full gap="10px" column onClick={onClick}>
       <Flex center="y" gap="10px">
         <LogoWrapper center>
-          <Logo
-            src={`https://raw.githubusercontent.com/hyperlane-xyz/hyperlane-registry/main/chains/${chain.name}/logo.svg`}
-            alt={chain.name}
-          />
+          <ChainLogo size={34} chain={chain.name} />
         </LogoWrapper>
         <Text weight="bold" size={22} ellipsis>
           {chain.displayName ?? chain.name}
@@ -83,12 +81,6 @@ const Card = styled(Flex)`
   :hover {
     transform: scale(1.05);
   }
-`;
-
-const Logo = styled.img`
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
 `;
 
 const LogoWrapper = styled(Flex)`

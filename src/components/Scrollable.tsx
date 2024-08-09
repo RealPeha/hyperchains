@@ -4,11 +4,15 @@ import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 interface ScrollableProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-export const Scrollable: React.FC<ScrollableProps> = ({ children }) => {
+export const Scrollable: React.FC<ScrollableProps> = ({
+  children,
+  className,
+}) => {
   return (
-    <Root scrollHideDelay={0}>
+    <Root scrollHideDelay={0} className={className}>
       <Viewport>{children}</Viewport>
       <Scrollbar orientation="vertical">
         <Thumb />
@@ -22,11 +26,16 @@ export const Scrollable: React.FC<ScrollableProps> = ({ children }) => {
 
 const Root = styled(ScrollArea.Root)`
   overflow: hidden;
+  height: 100%;
 `;
 
 const Viewport = styled(ScrollArea.Viewport)`
   width: 100%;
   height: 100%;
+
+  > div {
+    height: 100%;
+  }
 `;
 
 const Scrollbar = styled(ScrollArea.Scrollbar)`

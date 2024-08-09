@@ -26,6 +26,8 @@ type FlexProps = {
 
   margin?: CSSProperties['margin'];
   padding?: CSSProperties['padding'];
+
+  bg?: string;
 };
 
 const setProp = <T extends Record<string, any>>(
@@ -131,4 +133,5 @@ export const Flex = styled.div<FlexProps>`
   ${setProp('order')}
   ${setProp('margin')}
   ${setProp('padding')}
+  ${setProp('bg', 'background-color')}
 `;

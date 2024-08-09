@@ -10,7 +10,8 @@ interface CopyProps {
 export const Copy: React.FC<CopyProps> = ({ value }) => {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
+  const handleCopy = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+    e.stopPropagation();
     copy(value.toString());
 
     setCopied(true);

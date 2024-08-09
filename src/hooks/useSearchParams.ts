@@ -2,20 +2,16 @@ import { useState } from 'react';
 
 type SearchParams = Record<string, string | number | boolean | undefined>;
 
-export const useSearchParams = (
-  initial: SearchParams,
-  triggerUpdate = true,
-) => {
+export const useSearchParams = (initial: SearchParams) => {
   const [, update] = useState<{}>();
 
-  const { search } = window.location;
   const params: SearchParams = {
     ...initial,
-    ...Object.fromEntries(new URLSearchParams(search)),
+    ...Object.fromEntries(new URLSearchParams(window.location.search)),
   };
 
-  const setParams = (newParams: SearchParams) => {
-    const newSearch = new URLSearchParams(search);
+  const setParams = (newParams: SearchParams, triggerUpdate = true) => {
+    const newSearch = new URLSearchParams(window.location.search);
 
     for (const [key, value] of Object.entries(newParams)) {
       if (value === undefined) {

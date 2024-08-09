@@ -3,22 +3,18 @@ import { useSearchParams } from './useSearchParams';
 export const useUrlState = <T extends string | number | boolean>(
   key: string,
   initial: T,
-  triggerUpdate = true,
-): [T, (value: T) => void] => {
-  const [params, setParams] = useSearchParams(
-    {
-      [key]: initial,
-    },
-    triggerUpdate,
-  );
+) => {
+  const [params, setParams] = useSearchParams({
+    [key]: initial,
+  });
 
-  const setValue = (value: T) => {
+  const setValue = (value: T, triggerUpdate = true) => {
     if (value === initial) {
-      setParams({ [key]: undefined });
+      setParams({ [key]: undefined }, triggerUpdate);
     } else {
-      setParams({ [key]: value });
+      setParams({ [key]: value }, triggerUpdate);
     }
   };
 
-  return [params[key] as T, setValue];
+  return [params[key] as T, setValue] as const;
 };

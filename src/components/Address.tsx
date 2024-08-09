@@ -3,13 +3,19 @@ import styled from '@emotion/styled';
 import { RxExternalLink } from 'react-icons/rx';
 import copy from 'copy-to-clipboard';
 import { Flex } from './Flex';
+import { shortenAddress } from '../utils';
 
 interface AddressProps {
   address: string;
   explorer?: string;
+  length?: number;
 }
 
-export const Address: React.FC<AddressProps> = ({ address, explorer }) => {
+export const Address: React.FC<AddressProps> = ({
+  address,
+  explorer,
+  length,
+}) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -25,7 +31,7 @@ export const Address: React.FC<AddressProps> = ({ address, explorer }) => {
   return (
     <Flex center="y" gap="5px">
       <Wrapper center="y" onClick={handleCopy} copied={copied}>
-        {address}
+        {length ? shortenAddress(address, length) : address}
       </Wrapper>
       {explorer && (
         <a href={`${explorer}/address/${address}`} target="_blank">
@@ -38,9 +44,10 @@ export const Address: React.FC<AddressProps> = ({ address, explorer }) => {
 
 const Wrapper = styled(Flex)<{ copied: boolean }>`
   font-family: monospace;
+  font-size: 12px;
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: #f3f3f3;
+  background-color: #fff;
   width: fit-content;
   border: 1px dashed #000;
   cursor: pointer;
