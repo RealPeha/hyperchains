@@ -1,10 +1,11 @@
-import type { ChainMetadata } from '@hyperlane-xyz/sdk';
 import React from 'react';
+import type { ChainMetadata } from '@hyperlane-xyz/sdk';
+import dayjs from 'dayjs';
 import { Flex } from '../Flex';
 import { Text } from '../Text';
 import { Copy } from '../Copy';
 import { getChainTags } from '../../utils';
-import { ChainTag } from '../../constants';
+import { ChainTag, extraChainData } from '../../constants';
 
 interface ChainInfoProps {
   chain: ChainMetadata;
@@ -69,6 +70,18 @@ export const ChainInfo: React.FC<ChainInfoProps> = ({ chain }) => {
             </Text>
           </Flex>
         )}
+        {extraChainData[chain.name] && (
+          <Flex column center gap="10px">
+            <Text weight="bold" size={20}>
+              Added At
+            </Text>
+            <Text size={18}>
+              {dayjs(extraChainData[chain.name].addedAt).format('MM/DD/YYYY')}
+            </Text>
+          </Flex>
+        )}
+      </Flex>
+      <Flex gap="30px" center>
         {chain.deployer && (
           <Flex column center gap="10px">
             <Text weight="bold" size={20}>
@@ -83,8 +96,6 @@ export const ChainInfo: React.FC<ChainInfoProps> = ({ chain }) => {
             )}
           </Flex>
         )}
-      </Flex>
-      <Flex gap="30px" center>
         {explorer && (
           <Flex column center gap="10px">
             <Text weight="bold" size={20}>

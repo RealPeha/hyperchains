@@ -34,6 +34,7 @@ const Wrapper = styled(Flex)`
   border-radius: 5px;
   max-height: 55px;
   padding: 0 10px;
+  overflow: hidden;
 `;
 
 const Input = styled.input`

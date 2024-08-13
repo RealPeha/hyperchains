@@ -105,13 +105,7 @@ export const ChainDetails = forwardRef<HTMLDivElement, ChainDetailsProps>(
                         >
                           <Text weight="bold">{tab.title}</Text>
                           {tab.id === 'addresses' && (
-                            <Copy
-                              value={JSON.stringify(
-                                addresses?.[chain.name],
-                                null,
-                                2,
-                              )}
-                            />
+                            <Copy value={JSON.stringify(addresses, null, 2)} />
                           )}
                         </Tab>
                       ))}

@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { useClickAway } from 'react-use';
+import dayjs from 'dayjs';
 import { Flex } from './components/Flex';
 import { Search } from './components/Search';
-import { ChainTag } from './constants';
+import { ChainTag, extraChainData, tagToLabel } from './constants';
 import { ChainCard } from './components/ChainCard';
 import { Space } from './components/Space';
 import { TagSelect } from './components/TagSelect';
@@ -16,6 +17,42 @@ import { Text } from './components/Text';
 import { Oval } from 'react-loader-spinner';
 import { FaGithub } from 'react-icons/fa';
 import { useStore } from './store';
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+
+const processData = (chains: ChainMetadata[]) => {
+  const dateCounts: Record<string, number> = {};
+
+  Object.entries(extraChainData).forEach(([key, extra]) => {
+    if (!chains.some((chain) => chain.name === key)) {
+      return;
+    }
+
+    const date = dayjs(extra.addedAt).format('MM/DD/YYYY');
+    dateCounts[date] = (dateCounts[date] ?? 0) + 1;
+  });
+
+  const result = Object.keys(dateCounts)
+    .map((date) => ({
+      date,
+      count: dateCounts[date],
+    }))
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  let cumulativeCount = 0;
+
+  return result.map((entry) => {
+    cumulativeCount += entry.count;
+    return { date: entry.date, Chains: cumulativeCount };
+  });
+};
 
 export const Chains = () => {
   const chains = useStore.use.chains();
@@ -69,10 +106,11 @@ export const Chains = () => {
 
   useClickAway(ref, closeChainDetails);
 
+  const isSearch = !!query;
   const selectedChain = getChain(selectedChainName);
 
   return (
-    <Main center="x" isSearch={!!query} column gap="120px">
+    <Main center="x" isSearch={isSearch} column gap="120px">
       <Content column center="x" grow>
         <Header gap="20px" column>
           <Flex column gap="10px">
@@ -117,14 +155,58 @@ export const Chains = () => {
           </Flex>
         </Header>
         <Space height="35px" />
-        <Flex alignSelf="flex-end" padding="0 10px 0 0">
-          {filteredChains.length && (
+        <Flex justifyContent="space-between" full padding="0 10px">
+          {!isSearch && (
             <Text color="#6f6f6f" size={20}>
-              {filteredChains.length} chains
+              The number of chains over time
+            </Text>
+          )}
+          {filteredChains.length > 0 && (
+            <Text color="#6f6f6f" size={20}>
+              {isSearch ? 'Found ' : ''}
+              {filteredChains.length}
+              {filterTag === ChainTag.All ? ' ' : ` ${tagToLabel[filterTag]} `}
+              {filteredChains.length === 1 ? 'chain' : 'chains'}
             </Text>
           )}
         </Flex>
         <Space height="20px" />
+        <AnimatePresence initial={false}>
+          {!isSearch && (
+            <>
+              <ChartWrapper
+                as={motion.div}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <ResponsiveContainer width="100%" aspect={3 / 1}>
+                  <LineChart
+                    data={processData(filteredChains)}
+                    margin={{
+                      top: 20,
+                      right: 50,
+                      left: 0,
+                      bottom: 10,
+                    }}
+                  >
+                    <CartesianGrid />
+                    <XAxis dataKey="date" fontFamily="sans-serif" />
+                    <YAxis fontFamily="sans-serif" />
+                    <Tooltip />
+                    <Line
+                      type="monotone"
+                      dataKey="Chains"
+                      stroke="#2362c0"
+                      strokeWidth={2}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </ChartWrapper>
+            </>
+          )}
+        </AnimatePresence>
         <Flex wrap gap="30px" grow={!filteredChains.length} center="x">
           <AnimatePresence initial={false} mode="popLayout">
             {filteredChains.length ? (
@@ -256,4 +338,12 @@ const GithubLink = styled(Flex)`
 
 const AuthorLogo = styled.img`
   border-radius: 50%;
+`;
+
+const ChartWrapper = styled.div<HTMLMotionProps<'div'>>`
+  width: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
 `;

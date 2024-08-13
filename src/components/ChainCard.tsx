@@ -71,7 +71,6 @@ export const ChainCard: React.FC<ChainCardProps> = ({ chain, onClick }) => {
 const Card = styled(Flex)`
   background: rgba(255, 255, 255, 0.5);
   width: 300px;
-  height: 148px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
