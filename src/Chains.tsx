@@ -69,14 +69,20 @@ export const Chains = () => {
   const [filterTags, setFilterTags] = useUrlState<ChainTag[]>('tags', [ChainTag.All]);
 
   const handleTagChange = (newTags: ChainTag[]) => {
-    if (filterTags.includes(ChainTag.All) && newTags.length > 0) {
-      // If current selection is "All" and new tags are selected, replace "All" with new tags
+    // If current selection is "All" and no tags are selected, do nothing
+    if (filterTags.includes(ChainTag.All) && newTags.length === 0) {
+      return;
+    }
+    // Else If current selection is "All" and new tags are selected, replace "All" with new tags
+    else if (filterTags.includes(ChainTag.All) && newTags.length > 0) {
       setFilterTags(newTags.filter(tag => tag !== ChainTag.All));
-    } else if (newTags.includes(ChainTag.All)) {
-      // If "All" is selected, remove other tags
+    }
+    // Else If "All" is selected, remove other tags
+    else if (newTags.includes(ChainTag.All)) {
       setFilterTags([ChainTag.All]);
-    } else {
-      // Otherwise, update with the new tags
+    }
+    // Otherwise, update with the new tags
+    else {
       setFilterTags(newTags);
     }
   };
