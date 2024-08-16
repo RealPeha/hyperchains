@@ -68,6 +68,19 @@ export const Chains = () => {
 
   const [filterTags, setFilterTags] = useUrlState<ChainTag[]>('tags', [ChainTag.All]);
 
+  const handleTagChange = (newTags: ChainTag[]) => {
+    if (filterTags.includes(ChainTag.All) && newTags.length > 0) {
+      // If current selection is "All" and new tags are selected, replace "All" with new tags
+      setFilterTags(newTags.filter(tag => tag !== ChainTag.All));
+    } else if (newTags.includes(ChainTag.All)) {
+      // If "All" is selected, remove other tags
+      setFilterTags([ChainTag.All]);
+    } else {
+      // Otherwise, update with the new tags
+      setFilterTags(newTags);
+    }
+  };
+
   const [query, setQuery] = useUrlState<string>('search', '');
   const [value, setValue] = useState(query);
 
@@ -152,7 +165,7 @@ export const Chains = () => {
           </Flex>
           <Flex center="y" gap="10px">
             <Search value={value} onChange={handleSearchChange} />
-            <TagSelect value={filterTags} onChange={setFilterTags} />
+            <TagSelect value={filterTags} onChange={handleTagChange} />
           </Flex>
         </Header>
         <Space height="35px" />
