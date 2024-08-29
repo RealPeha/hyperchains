@@ -15,7 +15,7 @@ export const TagSelect: React.FC<TagSelectProps> = ({ value, onChange }) => {
 
   const handleSelect = (tag: ChainTag) => {
     const newValue = value.includes(tag)
-      ? value.filter(t => t !== tag)
+      ? value.filter((t) => t !== tag)
       : [...value, tag];
     onChange(newValue);
   };
@@ -23,20 +23,32 @@ export const TagSelect: React.FC<TagSelectProps> = ({ value, onChange }) => {
   return (
     <Wrapper gap="10px" as={motion.div} center="y">
       <OptionsList gap="5px" wrap>
-        {tags.map((tag) => (
-          <motion.div
-            key={tag}
-            layoutId={tag}
-            transition={{
-              type: 'spring',
-              damping: 20,
-              stiffness: 300,
-            }}
-            onClick={() => handleSelect(tag)}
-          >
-            <TagStyled tag={tag} big={value.includes(tag)} />
-          </motion.div>
-        ))}
+        {tags
+          .sort((a, b) => {
+            if (value.includes(a) && !value.includes(b)) {
+              return -1;
+            }
+
+            if (!value.includes(a) && value.includes(b)) {
+              return 1;
+            }
+
+            return 0;
+          })
+          .map((tag) => (
+            <motion.div
+              key={tag}
+              layoutId={tag}
+              transition={{
+                type: 'spring',
+                damping: 20,
+                stiffness: 300,
+              }}
+              onClick={() => handleSelect(tag)}
+            >
+              <TagStyled tag={tag} big={value.includes(tag)} />
+            </motion.div>
+          ))}
       </OptionsList>
     </Wrapper>
   );

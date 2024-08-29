@@ -66,7 +66,9 @@ export const Chains = () => {
   const [open, setOpen] = useState(!!selectedChainName);
   const ref = useRef<HTMLDivElement>(null);
 
-  const [filterTags, setFilterTags] = useUrlState<ChainTag[]>('tags', [ChainTag.All]);
+  const [filterTags, setFilterTags] = useUrlState<ChainTag[]>('tags', [
+    ChainTag.All,
+  ]);
 
   const handleTagChange = (newTags: ChainTag[]) => {
     // If current selection is "All" and no tags are selected, do nothing
@@ -75,7 +77,7 @@ export const Chains = () => {
     }
     // Else If current selection is "All" and new tags are selected, replace "All" with new tags
     else if (filterTags.includes(ChainTag.All) && newTags.length > 0) {
-      setFilterTags(newTags.filter(tag => tag !== ChainTag.All));
+      setFilterTags(newTags.filter((tag) => tag !== ChainTag.All));
     }
     // Else If "All" is selected, remove other tags
     else if (newTags.includes(ChainTag.All)) {
@@ -102,7 +104,7 @@ export const Chains = () => {
       }
 
       const chainTags = getChainTags(chain);
-      return filterTags.some(tag => chainTags.includes(tag));
+      return filterTags.some((tag) => chainTags.includes(tag));
     })
     .filter((chain) => {
       return (
@@ -184,9 +186,10 @@ export const Chains = () => {
           {filteredChains.length > 0 && (
             <Text color="#6f6f6f" size={20}>
               {isSearch ? 'Found ' : ''}
-              {filteredChains.length}
-              {' '}
-              {filterTags.includes(ChainTag.All) ? ' ' : `${filterTags.map(tag => tagToLabel[tag]).join(', ')} `}
+              {filteredChains.length}{' '}
+              {filterTags.includes(ChainTag.All)
+                ? ' '
+                : `${filterTags.map((tag) => tagToLabel[tag]).join(', ')} `}
               {filteredChains.length === 1 ? 'chain' : 'chains'}
             </Text>
           )}
