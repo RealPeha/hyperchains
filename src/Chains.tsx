@@ -66,7 +66,26 @@ export const Chains = () => {
   const [open, setOpen] = useState(!!selectedChainName);
   const ref = useRef<HTMLDivElement>(null);
 
-  const [filterTag, setFilterTag] = useUrlState<ChainTag>('tag', ChainTag.All);
+  const [filterTags, setFilterTags] = useUrlState<ChainTag[]>('tags', [ChainTag.All]);
+
+  const handleTagChange = (newTags: ChainTag[]) => {
+    // If current selection is "All" and no tags are selected, do nothing
+    if (filterTags.includes(ChainTag.All) && newTags.length === 0) {
+      return;
+    }
+    // Else If current selection is "All" and new tags are selected, replace "All" with new tags
+    else if (filterTags.includes(ChainTag.All) && newTags.length > 0) {
+      setFilterTags(newTags.filter(tag => tag !== ChainTag.All));
+    }
+    // Else If "All" is selected, remove other tags
+    else if (newTags.includes(ChainTag.All)) {
+      setFilterTags([ChainTag.All]);
+    }
+    // Otherwise, update with the new tags
+    else {
+      setFilterTags(newTags);
+    }
+  };
 
   const [query, setQuery] = useUrlState<string>('search', '');
   const [value, setValue] = useState(query);
@@ -78,11 +97,12 @@ export const Chains = () => {
 
   const filteredChains = chains
     .filter((chain) => {
-      if (filterTag === ChainTag.All) {
+      if (filterTags.length === 0 || filterTags.includes(ChainTag.All)) {
         return true;
       }
 
-      return getChainTags(chain).includes(filterTag);
+      const chainTags = getChainTags(chain);
+      return filterTags.some(tag => chainTags.includes(tag));
     })
     .filter((chain) => {
       return (
@@ -151,7 +171,7 @@ export const Chains = () => {
           </Flex>
           <Flex center="y" gap="10px">
             <Search value={value} onChange={handleSearchChange} />
-            <TagSelect value={filterTag} onChange={setFilterTag} />
+            <TagSelect value={filterTags} onChange={handleTagChange} />
           </Flex>
         </Header>
         <Space height="35px" />
@@ -165,7 +185,8 @@ export const Chains = () => {
             <Text color="#6f6f6f" size={20}>
               {isSearch ? 'Found ' : ''}
               {filteredChains.length}
-              {filterTag === ChainTag.All ? ' ' : ` ${tagToLabel[filterTag]} `}
+              {' '}
+              {filterTags.includes(ChainTag.All) ? ' ' : `${filterTags.map(tag => tagToLabel[tag]).join(', ')} `}
               {filteredChains.length === 1 ? 'chain' : 'chains'}
             </Text>
           )}
