@@ -3,20 +3,17 @@ import styled from '@emotion/styled';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { useClickAway } from 'react-use';
 import dayjs from 'dayjs';
-import { Flex } from './components/Flex';
-import { Search } from './components/Search';
-import { ChainTag, extraChainData, tagToLabel } from './constants';
-import { ChainCard } from './components/ChainCard';
-import { Space } from './components/Space';
-import { TagSelect } from './components/TagSelect';
-import { useUrlState } from './hooks';
-import { ChainDetails } from './components/ChainDetails';
+import { Flex } from '../../components/Flex';
+import { ChainTag, extraChainData, tagToLabel } from '../../constants';
+import { ChainCard } from '../../components/ChainCard';
+import { Space } from '../../components/Space';
+import { useUrlState } from '../../hooks';
+import { ChainDetails } from '../../components/ChainDetails';
 import type { ChainMetadata } from '@hyperlane-xyz/sdk';
-import { getChainTags } from './utils';
-import { Text } from './components/Text';
+import { getChainTags } from '../../utils';
+import { Text } from '../../components/Text';
 import { Oval } from 'react-loader-spinner';
-import { FaGithub } from 'react-icons/fa';
-import { useStore } from './store';
+import { useStore } from '../../store';
 import {
   CartesianGrid,
   Line,
@@ -26,6 +23,8 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { ChainsHeader } from './ChainsHeader';
+import { GithubLink } from '../../components/GitHubLink';
 
 const processData = (chains: ChainMetadata[]) => {
   const dateCounts: Record<string, number> = {};
@@ -134,48 +133,12 @@ export const Chains = () => {
   return (
     <Main center="x" isSearch={isSearch} column gap="120px">
       <Content column center="x" grow>
-        <Header gap="20px" column>
-          <Flex column gap="10px">
-            <Flex center="y" gap="10px">
-              <img
-                width={42}
-                height={42}
-                src="https://docs.hyperlane.xyz/img/logo.svg"
-              />
-              <Text size={40} weight="bold" color="#2362c0">
-                Hyperlane Chains
-              </Text>
-            </Flex>
-            <Flex center="y">
-              <Flex grow>
-                <Text color="#6f6f6f" size={18}>
-                  A list of chains supported by{' '}
-                  <a href="https://hyperlane.xyz" target="_blank">
-                    Hyperlane
-                  </a>{' '}
-                  protocol
-                </Text>
-              </Flex>
-              <GithubLink center="y" gap="5px" style={{ marginRight: '270px' }}>
-                <a
-                  href="https://github.com/RealPeha/hyperchains"
-                  target="_blank"
-                >
-                  <Flex center="y" gap="5px">
-                    <FaGithub size={16} color="#202020" />
-                    <Text weight="bold" color="#202020">
-                      RealPeha/hyperchains
-                    </Text>
-                  </Flex>
-                </a>
-              </GithubLink>
-            </Flex>
-          </Flex>
-          <Flex center="y" gap="10px">
-            <Search value={value} onChange={handleSearchChange} />
-            <TagSelect value={filterTags} onChange={handleTagChange} />
-          </Flex>
-        </Header>
+        <ChainsHeader
+          search={value}
+          filterTags={filterTags}
+          onSearchChange={handleSearchChange}
+          onTagChange={handleTagChange}
+        />
         <Space height="35px" />
         <Flex justifyContent="space-between" full padding="0 10px">
           {!isSearch && (
@@ -290,7 +253,7 @@ export const Chains = () => {
       <Flex center="y" gap="5px">
         <Text color="#6f6f6f">Brought to life by</Text>
         <GithubLink center="y" gap="5px">
-          <a href="https://github.com/RealPeha" target="_blank">
+          <a href="https://t.me/RealPeha" target="_blank">
             <Flex center="y" gap="5px">
               <AuthorLogo
                 width={24}
@@ -339,25 +302,6 @@ const Main = styled(Flex)<{ isSearch: boolean }>`
 const Content = styled(Flex)`
   width: 100%;
   max-width: 1300px;
-`;
-
-const Header = styled(Flex)`
-  width: 100%;
-  max-width: 1000px;
-`;
-
-const GithubLink = styled(Flex)`
-  border-radius: 10px;
-  padding: 3px 6px 3px 0;
-  transition: background 0.3s;
-
-  a {
-    text-decoration: none;
-  }
-
-  :hover {
-    background: rgba(0, 0, 0, 0.05);
-  }
 `;
 
 const AuthorLogo = styled.img`

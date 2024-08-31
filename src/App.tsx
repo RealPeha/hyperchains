@@ -1,6 +1,7 @@
 import { Route, Switch } from 'wouter';
 import { useStore } from './store';
-import { Chains } from './Chains';
+
+import Chains from './pages/chains';
 
 useStore.getState().load();
 

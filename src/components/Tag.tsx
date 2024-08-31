@@ -24,7 +24,7 @@ const colors: Record<ChainTag, string> = {
 export const Tag: React.FC<TagProps> = ({ tag, big = false, className }) => {
   return (
     <TagStyled color={colors[tag]} center big={big} className={className}>
-      <Text color="#fff" size={big ? 18 : 14}>
+      <Text color="#fff" size={big ? 16 : 14}>
         {tag}
       </Text>
     </TagStyled>
@@ -34,5 +34,5 @@ export const Tag: React.FC<TagProps> = ({ tag, big = false, className }) => {
 const TagStyled = styled(Flex)<{ color: string; big: boolean }>`
   background: ${(props) => props.color};
   border-radius: 4px;
-  padding: ${(p) => (p.big ? '4px 8px' : '2px 6px')};
+  padding: ${(p) => (p.big ? '3px 6px' : '2px 6px')};
 `;

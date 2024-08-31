@@ -20,47 +20,49 @@ export const TagSelect: React.FC<TagSelectProps> = ({ value, onChange }) => {
     onChange(newValue);
   };
 
+  const sortedTags = tags.sort((a, b) => {
+    if (value.includes(a) && !value.includes(b)) {
+      return -1;
+    }
+
+    if (!value.includes(a) && value.includes(b)) {
+      return 1;
+    }
+
+    return 0;
+  });
+
+  const firstRow = sortedTags.slice(0, 4);
+  const secondRow = sortedTags.slice(4);
+
+  const renderTags = (tags: ChainTag[]) => {
+    return (
+      <Flex gap="5px" center="y">
+        {tags.map((tag) => (
+          <motion.div
+            key={tag}
+            layoutId={tag}
+            transition={{
+              type: 'spring',
+              damping: 20,
+              stiffness: 300,
+            }}
+            onClick={() => handleSelect(tag)}
+          >
+            <TagStyled tag={tag} big={value.includes(tag)} />
+          </motion.div>
+        ))}
+      </Flex>
+    );
+  };
+
   return (
-    <Wrapper gap="10px" as={motion.div} center="y">
-      <OptionsList gap="5px" wrap>
-        {tags
-          .sort((a, b) => {
-            if (value.includes(a) && !value.includes(b)) {
-              return -1;
-            }
-
-            if (!value.includes(a) && value.includes(b)) {
-              return 1;
-            }
-
-            return 0;
-          })
-          .map((tag) => (
-            <motion.div
-              key={tag}
-              layoutId={tag}
-              transition={{
-                type: 'spring',
-                damping: 20,
-                stiffness: 300,
-              }}
-              onClick={() => handleSelect(tag)}
-            >
-              <TagStyled tag={tag} big={value.includes(tag)} />
-            </motion.div>
-          ))}
-      </OptionsList>
-    </Wrapper>
+    <Flex gap="5px" column as={motion.div} center="y">
+      {renderTags(firstRow)}
+      {renderTags(secondRow)}
+    </Flex>
   );
 };
-
-const Wrapper = styled(Flex)`
-  width: 270px;
-`;
-
-const OptionsList = styled(Flex)`
-  width: 210px;
-`;
 
 const TagStyled = styled(Tag)`
   cursor: pointer;
