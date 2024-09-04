@@ -4,6 +4,7 @@ import type {
   ChainMetadata,
   WarpCoreConfig,
 } from '@hyperlane-xyz/sdk';
+import { ProtocolType } from '@hyperlane-xyz/utils';
 import { createSelectorFunctions } from 'auto-zustand-selectors-hook';
 import { create } from 'zustand';
 
@@ -40,9 +41,14 @@ export const useStore = createSelectorFunctions(
         registry.getAddresses(),
         Promise.resolve(warpRouteConfigs), // registry.getWarpRoutes(),
       ]);
-      const chains = Object.values(metadata).sort(
-        (a, b) => Number(a.chainId) - Number(b.chainId),
-      );
+      const chains = Object.values(metadata)
+        // Filter out EVM chains that don't have a mailbox address
+        .filter((chain) =>
+          chain.protocol === ProtocolType.Ethereum
+            ? addresses[chain.name]?.mailbox
+            : true
+        )
+        .sort((a, b) => Number(a.chainId) - Number(b.chainId));
 
       // const newExtraChainData: ChainMap<ExtraChainData> = {};
 

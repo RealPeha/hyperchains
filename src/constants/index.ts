@@ -1,4 +1,5 @@
 import { ChainMap } from '@hyperlane-xyz/sdk';
+import { ProtocolType } from '@hyperlane-xyz/utils';
 import { ExtraChainData } from '../types';
 
 export enum ChainTag {
@@ -10,12 +11,6 @@ export enum ChainTag {
   EVM = 'EVM',
   Solana = 'Solana',
   Cosmos = 'Cosmos',
-}
-
-export enum ProtocolType {
-  Ethereum = 'ethereum',
-  Sealevel = 'sealevel',
-  Cosmos = 'cosmos',
 }
 
 export const protocolToTag: Record<ProtocolType, ChainTag> = {
