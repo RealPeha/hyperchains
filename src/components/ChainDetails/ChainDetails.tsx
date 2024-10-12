@@ -14,6 +14,7 @@ import { useUrlState } from '../../hooks';
 import { ChainInfo } from './ChainInfo';
 import { Copy } from '../Copy';
 import { useStore } from '../../store';
+import { ChainValidators } from './ChainValidators';
 
 interface ChainDetailsProps {
   chain: ChainMetadata;
@@ -29,6 +30,10 @@ const tabs = [
     title: 'Addresses',
   },
   {
+    id: 'validators',
+    title: 'Validators',
+  },
+  {
     id: 'warps',
     title: 'Warp Routes',
   },
@@ -40,6 +45,7 @@ export const ChainDetails = forwardRef<HTMLDivElement, ChainDetailsProps>(
   ({ chain }, ref) => {
     const getAddresses = useStore.use.getAddresses();
     const getWarpRoutes = useStore.use.getWarpRoutes();
+    const getValidators = useStore.use.getValidators();
 
     const [activeTab, setActiveTab] = useUrlState<TabId>('tab', 'info');
 
@@ -50,14 +56,17 @@ export const ChainDetails = forwardRef<HTMLDivElement, ChainDetailsProps>(
     }, []);
 
     const addresses = getAddresses(chain.name);
+    const validators = getValidators(chain.name);
 
     const withAddresses = !!addresses;
+    const withValidators = !!validators;
     const withWarpRoutes = getWarpRoutes(chain.name).warpRoutesArray.length > 0;
 
     const renderTabs: Record<TabId, boolean> = {
       info: withAddresses || withWarpRoutes,
       addresses: withAddresses,
       warps: withWarpRoutes,
+      validators: withValidators,
     };
 
     return (
@@ -114,6 +123,9 @@ export const ChainDetails = forwardRef<HTMLDivElement, ChainDetailsProps>(
                     {activeTab === 'info' && <ChainInfo chain={chain} />}
                     {activeTab === 'addresses' && (
                       <ChainAddresses chain={chain} />
+                    )}
+                    {activeTab === 'validators' && (
+                      <ChainValidators chain={chain} />
                     )}
                     {activeTab === 'warps' && <ChainWarpRoutes chain={chain} />}
                   </TabContent>

@@ -7,6 +7,8 @@ import type {
 import { ProtocolType } from '@hyperlane-xyz/utils';
 import { createSelectorFunctions } from 'auto-zustand-selectors-hook';
 import { create } from 'zustand';
+import { parseValidators } from '../utils';
+import { ValidatorInfo } from '../types';
 
 interface Store {
   isLoading: boolean;
@@ -14,6 +16,7 @@ interface Store {
   chains: ChainMetadata[];
   addresses: ChainMap<Record<string, string>>;
   warpRoutes: Record<string, WarpCoreConfig>;
+  validators: ChainMap<ValidatorInfo[]>;
 
   load: () => Promise<void>;
 
@@ -23,6 +26,7 @@ interface Store {
     warpRoutesArray: [string, WarpCoreConfig][];
     warpRoutes: Record<string, WarpCoreConfig>;
   };
+  getValidators: (chain: string) => ValidatorInfo[] | undefined;
 }
 
 export const useStore = createSelectorFunctions(
@@ -32,23 +36,32 @@ export const useStore = createSelectorFunctions(
     chains: [],
     addresses: {},
     warpRoutes: {},
+    validators: {},
 
     load: async () => {
       const registry = new GithubRegistry();
 
-      const [metadata, addresses, warpRoutes] = await Promise.all([
-        registry.getMetadata(),
-        registry.getAddresses(),
-        Promise.resolve(warpRouteConfigs), // registry.getWarpRoutes(),
-      ]);
+      const [metadata, addresses, warpRoutes, validatorsFile] =
+        await Promise.all([
+          registry.getMetadata(),
+          registry.getAddresses(),
+          Promise.resolve(warpRouteConfigs), // registry.getWarpRoutes(),
+          fetch(
+            'https://raw.githubusercontent.com/hyperlane-xyz/hyperlane-monorepo/refs/heads/main/typescript/sdk/src/consts/multisigIsm.ts',
+          )
+            .then((res) => res.text())
+            .catch(() => null),
+        ]);
       const chains = Object.values(metadata)
         // Filter out EVM chains that don't have a mailbox address
         .filter((chain) =>
           chain.protocol === ProtocolType.Ethereum
             ? addresses[chain.name]?.mailbox
-            : true
+            : true,
         )
         .sort((a, b) => Number(a.chainId) - Number(b.chainId));
+
+      const validators = validatorsFile ? parseValidators(validatorsFile) : {};
 
       // const newExtraChainData: ChainMap<ExtraChainData> = {};
 
@@ -79,6 +92,7 @@ export const useStore = createSelectorFunctions(
         chains,
         addresses,
         warpRoutes,
+        validators,
       });
     },
     getChain: (chain) => {
@@ -86,6 +100,9 @@ export const useStore = createSelectorFunctions(
     },
     getAddresses: (chain) => {
       return get().addresses[chain];
+    },
+    getValidators: (chain) => {
+      return get().validators[chain];
     },
     getWarpRoutes: (chain) => {
       const warpRoutesArray = Object.entries(get().warpRoutes).filter(
