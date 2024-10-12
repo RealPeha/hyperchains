@@ -23,7 +23,7 @@ export const parseValidators = (fileContent: string) => {
 
       result[currentNetwork].push({
         address,
-        name: name || 'Unknown',
+        name: name || 'abacus works',
       });
     }
   });
