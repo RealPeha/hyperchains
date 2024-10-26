@@ -63,30 +63,6 @@ export const useStore = createSelectorFunctions(
 
       const validators = validatorsFile ? parseValidators(validatorsFile) : {};
 
-      // const newExtraChainData: ChainMap<ExtraChainData> = {};
-
-      // try {
-      //   for (const chain of chains) {
-      //     if (extraChainData[chain.name]) {
-      //       newExtraChainData[chain.name] = extraChainData[chain.name];
-      //       continue;
-      //     }
-
-      //     const commits = (await fetch(
-      //       `https://api.github.com/repos/hyperlane-xyz/hyperlane-registry/commits?path=chains/${chain.name}`,
-      //     ).then((res) => res.json())) as any[];
-
-      //     const firstCommit = commits.at(-1);
-
-      //     if (firstCommit) {
-      //       newExtraChainData[chain.name] = {
-      //         addedAt: new Date(firstCommit.commit.author.date).getTime(),
-      //       };
-      //     }
-      //   }
-      // } catch (e) {}
-      // console.log(newExtraChainData);
-
       set({
         isLoading: false,
         chains,

@@ -34,12 +34,6 @@ export const extraChainData: ChainMap<ExtraChainData> = {
   ethereum: {
     addedAt: 1710873111000,
   },
-  flare: {
-    addedAt: 1724679974000,
-  },
-  lukso: {
-    addedAt: 1720194661000,
-  },
   bsc: {
     addedAt: 1710873111000,
   },
@@ -49,86 +43,14 @@ export const extraChainData: ChainMap<ExtraChainData> = {
   gnosis: {
     addedAt: 1710873111000,
   },
-  fusemainnet: {
-    addedAt: 1721210072000,
-  },
   mantapacific: {
     addedAt: 1710873111000,
-  },
-  fantom: {
-    addedAt: 1728493308000,
-  },
-  fraxtal: {
-    addedAt: 1718116503000,
-  },
-  kroma: {
-    addedAt: 1722948900000,
-  },
-  astar: {
-    addedAt: 1723239227000,
-  },
-  endurance: {
-    addedAt: 1720717456000,
-  },
-  koitestnet: {
-    addedAt: 1728576897000,
-  },
-  hyperliquidevmtestnet: {
-    addedAt: 1727378000000,
-  },
-  coredao: {
-    addedAt: 1724679974000,
-  },
-  lisk: {
-    addedAt: 1722948900000,
-  },
-  dogechain: {
-    addedAt: 1724679974000,
   },
   inevm: {
     addedAt: 1710873111000,
   },
-  astarzkevm: {
-    addedAt: 1724679974000,
-  },
-  kalychain: {
-    addedAt: 1727967654000,
-  },
-  mantle: {
-    addedAt: 1719932096000,
-  },
-  citreatestnet: {
-    addedAt: 1727378000000,
-  },
-  euphoria: {
-    addedAt: 1727955874000,
-  },
-  connextsepolia: {
-    addedAt: 1720752748000,
-  },
-  cyber: {
-    addedAt: 1722948900000,
-  },
   base: {
     addedAt: 1710873111000,
-  },
-  arthera: {
-    addedAt: 1720111449000,
-  },
-  artheratestnet: {
-    addedAt: 1719852062000,
-  },
-  immutablezkevm: {
-    addedAt: 1722948900000,
-  },
-  holesky: {
-    addedAt: 1716189243000,
-  },
-  everclear: {
-    addedAt: 1726065141000,
-  },
-  alephzeroevm: {
-    addedAt: 1728043672000,
   },
   arbitrum: {
     addedAt: 1710873111000,
@@ -145,74 +67,8 @@ export const extraChainData: ChainMap<ExtraChainData> = {
   alfajores: {
     addedAt: 1710873111000,
   },
-  dodotestnet: {
-    addedAt: 1721928760000,
-  },
-  linea: {
-    addedAt: 1718116503000,
-  },
-  bob: {
-    addedAt: 1719932096000,
-  },
-  berabartio: {
-    addedAt: 1725117056000,
-  },
-  blast: {
-    addedAt: 1714425949000,
-  },
-  basesepolia: {
-    addedAt: 1719341681000,
-  },
-  chiliz: {
-    addedAt: 1728043672000,
-  },
-  heneztestnet: {
-    addedAt: 1725552663000,
-  },
-  formtestnet: {
-    addedAt: 1727378000000,
-  },
-  bitlayer: {
-    addedAt: 1724679974000,
-  },
-  camptestnet: {
-    addedAt: 1727378000000,
-  },
-  cheesechain: {
-    addedAt: 1722416578000,
-  },
-  arbitrumsepolia: {
-    addedAt: 1718717486000,
-  },
-  ecotestnet: {
-    addedAt: 1722948900000,
-  },
-  galadrieldevnet: {
-    addedAt: 1723220538000,
-  },
-  forma: {
-    addedAt: 1723836705000,
-  },
-  fhenixtestnet: {
-    addedAt: 1724088664000,
-  },
   eclipsetestnet: {
     addedAt: 1710873111000,
-  },
-  degenchain: {
-    addedAt: 1722948900000,
-  },
-  ancient8: {
-    addedAt: 1713541564000,
-  },
-  lumia: {
-    addedAt: 1728043672000,
-  },
-  arcadiatestnet: {
-    addedAt: 1728581730000,
-  },
-  eclipsemainnet: {
-    addedAt: 1725270331000,
   },
   injective: {
     addedAt: 1710873111000,
@@ -220,56 +76,8 @@ export const extraChainData: ChainMap<ExtraChainData> = {
   optimism: {
     addedAt: 1710873111000,
   },
-  rootstock: {
-    addedAt: 1724167734000,
-  },
-  rootstocktestnet: {
-    addedAt: 1723823685000,
-  },
-  metertestnet: {
-    addedAt: 1728576900000,
-  },
-  viction: {
-    addedAt: 1710873111000,
-  },
-  shibarium: {
-    addedAt: 1724679974000,
-  },
   polygon: {
     addedAt: 1710873111000,
-  },
-  mint: {
-    addedAt: 1722948900000,
-  },
-  xlayer: {
-    addedAt: 1722416578000,
-  },
-  opbnb: {
-    addedAt: 1728399410000,
-  },
-  molten: {
-    addedAt: 1724668186000,
-  },
-  pulsechain: {
-    addedAt: 1724679974000,
-  },
-  worldchain: {
-    addedAt: 1722416578000,
-  },
-  redstone: {
-    addedAt: 1716224404000,
-  },
-  modetestnet: {
-    addedAt: 1728586489000,
-  },
-  oortmainnet: {
-    addedAt: 1726137449000,
-  },
-  wanchaintestnet: {
-    addedAt: 1728493086000,
-  },
-  metis: {
-    addedAt: 1722948900000,
   },
   polygonzkevm: {
     addedAt: 1710873111000,
@@ -277,56 +85,146 @@ export const extraChainData: ChainMap<ExtraChainData> = {
   moonbeam: {
     addedAt: 1710873111000,
   },
-  moonbase: {
-    addedAt: 1727880797000,
+  neutron: {
+    addedAt: 1710873111000,
   },
-  unichaintestnet: {
-    addedAt: 1728581730000,
+  viction: {
+    addedAt: 1710873111000,
   },
-  sei: {
-    addedAt: 1718116503000,
+  scrollsepolia: {
+    addedAt: 1710873111000,
   },
-  soneiumtestnet: {
-    addedAt: 1727378000000,
+  scroll: {
+    addedAt: 1710873111000,
   },
-  sanko: {
-    addedAt: 1722948900000,
+  sepolia: {
+    addedAt: 1710873111000,
   },
-  u2utestnet: {
-    addedAt: 1728399410000,
+  plumetestnet: {
+    addedAt: 1710873111000,
   },
-  tangletestnet: {
-    addedAt: 1722948900000,
+  solanatestnet: {
+    addedAt: 1710873111000,
   },
-  merlin: {
-    addedAt: 1722948900000,
+  solanadevnet: {
+    addedAt: 1710873111000,
   },
-  mantlesepolia: {
-    addedAt: 1728576897000,
+  ancient8: {
+    addedAt: 1713541564000,
   },
-  tangle: {
-    addedAt: 1722948900000,
-  },
-  zetachain: {
-    addedAt: 1716224404000,
+  blast: {
+    addedAt: 1714425949000,
   },
   mode: {
     addedAt: 1714425949000,
   },
+  holesky: {
+    addedAt: 1716189243000,
+  },
+  redstone: {
+    addedAt: 1716224404000,
+  },
+  zetachain: {
+    addedAt: 1716224404000,
+  },
+  sketchpad: {
+    addedAt: 1716583202000,
+  },
+  stride: {
+    addedAt: 1717038016000,
+  },
+  fraxtal: {
+    addedAt: 1718116503000,
+  },
+  linea: {
+    addedAt: 1718116503000,
+  },
+  sei: {
+    addedAt: 1718116503000,
+  },
+  osmosis: {
+    addedAt: 1718120223000,
+  },
+  arbitrumsepolia: {
+    addedAt: 1718717486000,
+  },
+  basesepolia: {
+    addedAt: 1719341681000,
+  },
+  artheratestnet: {
+    addedAt: 1719852062000,
+  },
+  bob: {
+    addedAt: 1719932096000,
+  },
+  mantle: {
+    addedAt: 1719932096000,
+  },
+  taiko: {
+    addedAt: 1719932096000,
+  },
+  arthera: {
+    addedAt: 1720111449000,
+  },
+  lukso: {
+    addedAt: 1720194661000,
+  },
+  endurance: {
+    addedAt: 1720717456000,
+  },
+  connextsepolia: {
+    addedAt: 1720752748000,
+  },
   superpositiontestnet: {
     addedAt: 1721048842000,
   },
-  taikohekla: {
-    addedAt: 1728493787000,
+  fusemainnet: {
+    addedAt: 1721210072000,
   },
-  neoxt4: {
-    addedAt: 1725287193000,
+  zoramainnet: {
+    addedAt: 1721210072000,
   },
-  neutron: {
-    addedAt: 1710873111000,
+  dodotestnet: {
+    addedAt: 1721928760000,
   },
-  superposition: {
-    addedAt: 1728043672000,
+  cheesechain: {
+    addedAt: 1722416578000,
+  },
+  xlayer: {
+    addedAt: 1722416578000,
+  },
+  worldchain: {
+    addedAt: 1722416578000,
+  },
+  kroma: {
+    addedAt: 1722948900000,
+  },
+  lisk: {
+    addedAt: 1722948900000,
+  },
+  cyber: {
+    addedAt: 1722948900000,
+  },
+  immutablezkevm: {
+    addedAt: 1722948900000,
+  },
+  ecotestnet: {
+    addedAt: 1722948900000,
+  },
+  degenchain: {
+    addedAt: 1722948900000,
+  },
+  mint: {
+    addedAt: 1722948900000,
+  },
+  metis: {
+    addedAt: 1722948900000,
+  },
+  sanko: {
+    addedAt: 1722948900000,
+  },
+  merlin: {
+    addedAt: 1722948900000,
   },
   proofofplay: {
     addedAt: 1722948900000,
@@ -337,67 +235,226 @@ export const extraChainData: ChainMap<ExtraChainData> = {
   real: {
     addedAt: 1722948900000,
   },
-  taiko: {
-    addedAt: 1719932096000,
+  tangletestnet: {
+    addedAt: 1722948900000,
   },
-  scrollsepolia: {
-    addedAt: 1710873111000,
-  },
-  odysseytestnet: {
-    addedAt: 1728664767000,
-  },
-  optimismsepolia: {
-    addedAt: 1723543214000,
-  },
-  osmosis: {
-    addedAt: 1718120223000,
+  tangle: {
+    addedAt: 1722948900000,
   },
   zircuit: {
     addedAt: 1722948900000,
   },
-  sonictestnet: {
-    addedAt: 1728581730000,
-  },
-  scroll: {
-    addedAt: 1710873111000,
-  },
   xai: {
     addedAt: 1722948900000,
   },
-  sketchpad: {
-    addedAt: 1716583202000,
+  galadrieldevnet: {
+    addedAt: 1723220538000,
   },
-  zoramainnet: {
-    addedAt: 1721210072000,
+  astar: {
+    addedAt: 1723239227000,
   },
-  sepolia: {
-    addedAt: 1710873111000,
+  optimismsepolia: {
+    addedAt: 1723543214000,
   },
-  suavetoliman: {
-    addedAt: 1727378000000,
+  stridetestnet: {
+    addedAt: 1723821623000,
   },
-  piccadilly: {
-    addedAt: 1725982319000,
+  rootstocktestnet: {
+    addedAt: 1723823685000,
   },
-  plumetestnet: {
-    addedAt: 1710873111000,
+  forma: {
+    addedAt: 1723836705000,
+  },
+  fhenixtestnet: {
+    addedAt: 1724088664000,
+  },
+  rootstock: {
+    addedAt: 1724167734000,
+  },
+  molten: {
+    addedAt: 1724668186000,
+  },
+  flare: {
+    addedAt: 1724679974000,
+  },
+  coredao: {
+    addedAt: 1724679974000,
+  },
+  dogechain: {
+    addedAt: 1724679974000,
+  },
+  astarzkevm: {
+    addedAt: 1724679974000,
+  },
+  bitlayer: {
+    addedAt: 1724679974000,
+  },
+  pulsechain: {
+    addedAt: 1724679974000,
+  },
+  polynomial: {
+    addedAt: 1724679974000,
+  },
+  shibarium: {
+    addedAt: 1724679974000,
   },
   rari: {
     addedAt: 1724679974000,
   },
+  berabartio: {
+    addedAt: 1725117056000,
+  },
+  eclipsemainnet: {
+    addedAt: 1725270331000,
+  },
   solanamainnet: {
     addedAt: 1725270331000,
   },
-  solanatestnet: {
-    addedAt: 1710873111000,
+  neoxt4: {
+    addedAt: 1725287193000,
   },
-  solanadevnet: {
-    addedAt: 1710873111000,
+  heneztestnet: {
+    addedAt: 1725552663000,
   },
-  stride: {
-    addedAt: 1717038016000,
+  piccadilly: {
+    addedAt: 1725982319000,
   },
-  stridetestnet: {
-    addedAt: 1723821623000,
+  everclear: {
+    addedAt: 1726065141000,
+  },
+  oortmainnet: {
+    addedAt: 1726137449000,
+  },
+  hyperliquidevmtestnet: {
+    addedAt: 1727378000000,
+  },
+  citreatestnet: {
+    addedAt: 1727378000000,
+  },
+  formtestnet: {
+    addedAt: 1727378000000,
+  },
+  camptestnet: {
+    addedAt: 1727378000000,
+  },
+  soneiumtestnet: {
+    addedAt: 1727378000000,
+  },
+  suavetoliman: {
+    addedAt: 1727378000000,
+  },
+  moonbase: {
+    addedAt: 1727880797000,
+  },
+  kalychain: {
+    addedAt: 1727967654000,
+  },
+  alephzeroevm: {
+    addedAt: 1728043672000,
+  },
+  chiliz: {
+    addedAt: 1728043672000,
+  },
+  lumia: {
+    addedAt: 1728043672000,
+  },
+  superposition: {
+    addedAt: 1728043672000,
+  },
+  opbnb: {
+    addedAt: 1728399410000,
+  },
+  u2utestnet: {
+    addedAt: 1728399410000,
+  },
+  wanchaintestnet: {
+    addedAt: 1728493086000,
+  },
+  fantom: {
+    addedAt: 1728493308000,
+  },
+  taikohekla: {
+    addedAt: 1728493787000,
+  },
+  koitestnet: {
+    addedAt: 1728576897000,
+  },
+  mantlesepolia: {
+    addedAt: 1728576897000,
+  },
+  metertestnet: {
+    addedAt: 1728576900000,
+  },
+  arcadiatestnet: {
+    addedAt: 1728581730000,
+  },
+  unichaintestnet: {
+    addedAt: 1728581730000,
+  },
+  sonictestnet: {
+    addedAt: 1728581730000,
+  },
+  modetestnet: {
+    addedAt: 1728586489000,
+  },
+  odysseytestnet: {
+    addedAt: 1728664767000,
+  },
+  flow: {
+    addedAt: 1728988808000,
+  },
+  metall2: {
+    addedAt: 1728988808000,
+  },
+  canto: {
+    addedAt: 1729091482000,
+  },
+  zoratestnet: {
+    addedAt: 1729091482000,
+  },
+  storytestnet: {
+    addedAt: 1729098788000,
+  },
+  harmonytestnet: {
+    addedAt: 1729517836000,
+  },
+  opbnbtestnet: {
+    addedAt: 1729518595000,
+  },
+  blastsepolia: {
+    addedAt: 1729526284000,
+  },
+  boba: {
+    addedAt: 1729526334000,
+  },
+  bobabnbtestnet: {
+    addedAt: 1729527007000,
+  },
+  bobabnb: {
+    addedAt: 1729528136000,
+  },
+  fraxtaltestnet: {
+    addedAt: 1729528374000,
+  },
+  lisksepolia: {
+    addedAt: 1729528374000,
+  },
+  cantotestnet: {
+    addedAt: 1729528374000,
+  },
+  smartbch: {
+    addedAt: 1729772001000,
+  },
+  humanitytestnet: {
+    addedAt: 1729778973000,
+  },
+  superseedtestnet: {
+    addedAt: 1729787922000,
+  },
+  euphoriatestnet: {
+    addedAt: 1729850100000,
+  },
+  mantapacifictestnet: {
+    addedAt: 1729850720000,
   },
 };

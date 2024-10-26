@@ -15,14 +15,14 @@ importers:
         specifier: ^11.13.0
         version: 11.13.0(@emotion/react@11.13.0(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1)
       '@hyperlane-xyz/registry':
-        specifier: ^4.7.0
-        version: 4.7.0
+        specifier: ^4.11.1
+        version: 4.11.1
       '@hyperlane-xyz/sdk':
-        specifier: ^5.5.0
-        version: 5.5.0(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(@types/sinon-chai@3.2.12)(bufferutil@4.0.8)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.2)(typescript@5.5.4)(utf-8-validate@5.0.10)
+        specifier: ^5.6.2
+        version: 5.6.2(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(@types/sinon-chai@3.2.12)(bufferutil@4.0.8)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.2)(typescript@5.5.4)(utf-8-validate@5.0.10)
       '@hyperlane-xyz/utils':
-        specifier: ^5.5.0
-        version: 5.5.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+        specifier: ^5.6.2
+        version: 5.6.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       '@radix-ui/react-scroll-area':
         specifier: ^1.1.0
         version: 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -738,27 +738,27 @@ packages:
     resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
 
-  '@hyperlane-xyz/core@5.4.1':
-    resolution: {integrity: sha512-Gp+ollseH5MIssSXHvcSWOzvB4NjpYBwkZBw39IEV2N5ZMZJLk6nPze5iXCqbf3UZJiI/Z06syeB9ugTXGxxLg==}
+  '@hyperlane-xyz/core@5.6.1':
+    resolution: {integrity: sha512-68OXnetO7jx0LYB45jkobx+1VlQpUxUS17DYdLXGJ2Xl3f1SEipNsGEBO0zujqLhWP2HgZViG8Es+DNz+SPFuQ==}
     engines: {node: '>=16'}
     peerDependencies:
       '@ethersproject/abi': '*'
       '@ethersproject/providers': '*'
       '@types/sinon-chai': '*'
 
-  '@hyperlane-xyz/registry@4.7.0':
-    resolution: {integrity: sha512-cYjQ/2+75SW5FcavEEveuJfLZKos1jJ781YZ3uOkIQJJfkrZLtPdqZC+XAQYorz+nDqQRrmE7fnCfhC4pDb58A==}
+  '@hyperlane-xyz/registry@4.11.1':
+    resolution: {integrity: sha512-vty8LpcXlBlo/BklleyWq4ifwnhL6wlzMhL3nf2+35Tn6/39STUu1tFfSwhPTKQLo0A7lncz4gNTvW/IkhuHNQ==}
     engines: {node: '>=16'}
 
-  '@hyperlane-xyz/sdk@5.5.0':
-    resolution: {integrity: sha512-seRqUwMxnM0+M8ivzCaeyostmYLUQdlie+60mgNm2SAArxQfjzypQalRAQSeTpsRvN62o82vIR/s4C0hihWdlA==}
+  '@hyperlane-xyz/sdk@5.6.2':
+    resolution: {integrity: sha512-BSyLNeQ+9glyP7V8o/1G4Yr3fYjCoZarQ7PX80NIwY4RJ9sP1Irx2dZPFaBZLB6iQDXDUymY07hP5qg8xiNEQQ==}
     engines: {node: '>=16'}
     peerDependencies:
       '@ethersproject/abi': '*'
       '@ethersproject/providers': '*'
 
-  '@hyperlane-xyz/utils@5.5.0':
-    resolution: {integrity: sha512-HUNEIHw3ArW4Qd+xn2LJ7TcPvAC/giCvnz6EfTbWYjUjudRqUKr3SSNczhwQ9wOyAUSRLxETH4SgnqvkPbfn2A==}
+  '@hyperlane-xyz/utils@5.6.2':
+    resolution: {integrity: sha512-Wc1tr/99FSXDPD1/LRocgz7n304eYAxYQF6hxIKVIroMPMVLKxrPXb66epQKUI4jZnAc3wfGFOziOP2hTCzZ3g==}
     engines: {node: '>=16'}
 
   '@jridgewell/gen-mapping@0.3.5':
@@ -5443,13 +5443,13 @@ snapshots:
 
   '@humanwhocodes/retry@0.3.0': {}
 
-  '@hyperlane-xyz/core@5.4.1(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(@types/sinon-chai@3.2.12)(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(hardhat-deploy@0.12.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.2)(utf-8-validate@5.0.10)':
+  '@hyperlane-xyz/core@5.6.1(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(@types/sinon-chai@3.2.12)(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(hardhat-deploy@0.12.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.2)(utf-8-validate@5.0.10)':
     dependencies:
       '@arbitrum/nitro-contracts': 1.3.0
       '@eth-optimism/contracts': 0.6.0(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10)
       '@ethersproject/abi': 5.7.0
       '@ethersproject/providers': 5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@hyperlane-xyz/utils': 5.5.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@hyperlane-xyz/utils': 5.6.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       '@layerzerolabs/lz-evm-oapp-v2': 2.0.2(@arbitrum/nitro-contracts@1.3.0)(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@eth-optimism/contracts@0.6.0(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@openzeppelin/contracts-upgradeable@4.9.6)(@openzeppelin/contracts@4.9.6)(hardhat-deploy@0.12.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.2)
       '@openzeppelin/contracts': 4.9.6
       '@openzeppelin/contracts-upgradeable': 4.9.6
@@ -5465,12 +5465,12 @@ snapshots:
       - solidity-bytes-utils
       - utf-8-validate
 
-  '@hyperlane-xyz/registry@4.7.0':
+  '@hyperlane-xyz/registry@4.11.1':
     dependencies:
       yaml: 2.4.5
       zod: 3.23.8
 
-  '@hyperlane-xyz/sdk@5.5.0(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(@types/sinon-chai@3.2.12)(bufferutil@4.0.8)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.2)(typescript@5.5.4)(utf-8-validate@5.0.10)':
+  '@hyperlane-xyz/sdk@5.6.2(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(@types/sinon-chai@3.2.12)(bufferutil@4.0.8)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.2)(typescript@5.5.4)(utf-8-validate@5.0.10)':
     dependencies:
       '@arbitrum/sdk': 4.0.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       '@aws-sdk/client-s3': 3.622.0
@@ -5478,8 +5478,8 @@ snapshots:
       '@cosmjs/stargate': 0.32.4(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       '@ethersproject/abi': 5.7.0
       '@ethersproject/providers': 5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@hyperlane-xyz/core': 5.4.1(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(@types/sinon-chai@3.2.12)(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(hardhat-deploy@0.12.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.2)(utf-8-validate@5.0.10)
-      '@hyperlane-xyz/utils': 5.5.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@hyperlane-xyz/core': 5.6.1(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(@types/sinon-chai@3.2.12)(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(hardhat-deploy@0.12.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.2)(utf-8-validate@5.0.10)
+      '@hyperlane-xyz/utils': 5.6.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       '@safe-global/api-kit': 1.3.0
       '@safe-global/protocol-kit': 1.3.0(bufferutil@4.0.8)(ethers@5.7.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10)
       '@safe-global/safe-deployments': 1.37.8
@@ -5510,7 +5510,7 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@hyperlane-xyz/utils@5.5.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@hyperlane-xyz/utils@5.6.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
     dependencies:
       '@cosmjs/encoding': 0.32.4
       '@solana/web3.js': 1.95.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
