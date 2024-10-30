@@ -25,6 +25,7 @@ import {
 } from 'recharts';
 import { ChainsHeader } from './ChainsHeader';
 import { GithubLink } from '../../components/GitHubLink';
+import { HeaderMenu } from '../../components/HeaderMenu';
 
 const processData = (chains: ChainMetadata[]) => {
   const dateCounts: Record<string, number> = {};
@@ -131,8 +132,9 @@ export const Chains = () => {
   const selectedChain = getChain(selectedChainName);
 
   return (
-    <Main center="x" isSearch={isSearch} column gap="120px">
-      <Content column center="x" grow>
+    <Main center="x" column>
+      <HeaderMenu />
+      <Content column center="x" grow isSearch={isSearch}>
         <ChainsHeader
           search={value}
           filterTags={filterTags}
@@ -276,11 +278,10 @@ export const Chains = () => {
   );
 };
 
-const Main = styled(Flex)<{ isSearch: boolean }>`
+const Main = styled(Flex)`
   width: 100vw;
   min-height: 100vh;
-  transition: padding 0.3s;
-  padding: ${(p) => (p.isSearch ? '60px' : '300px')} 24px 40px 24px;
+  padding: 0px 24px 40px 24px;
 
   :before {
     content: '';
@@ -299,9 +300,12 @@ const Main = styled(Flex)<{ isSearch: boolean }>`
   }
 `;
 
-const Content = styled(Flex)`
+const Content = styled(Flex)<{ isSearch: boolean }>`
   width: 100%;
   max-width: 1300px;
+  transition: padding 0.3s;
+  padding-top: ${(p) => (p.isSearch ? '60px' : '300px')};
+  padding-bottom: 120px;
 `;
 
 const AuthorLogo = styled.img`

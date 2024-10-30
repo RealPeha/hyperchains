@@ -8,12 +8,13 @@ import { ProtocolType } from '@hyperlane-xyz/utils';
 import { createSelectorFunctions } from 'auto-zustand-selectors-hook';
 import { create } from 'zustand';
 import { parseValidators } from '../utils';
-import { ValidatorInfo } from '../types';
+import { ValidatorInfo, WarpRoute } from '../types';
 
 interface Store {
   isLoading: boolean;
 
   chains: ChainMetadata[];
+  routes: WarpRoute[];
   addresses: ChainMap<Record<string, string>>;
   warpRoutes: Record<string, WarpCoreConfig>;
   validators: ChainMap<ValidatorInfo[]>;
@@ -34,6 +35,7 @@ export const useStore = createSelectorFunctions(
     isLoading: true,
 
     chains: [],
+    routes: [],
     addresses: {},
     warpRoutes: {},
     validators: {},
@@ -47,7 +49,7 @@ export const useStore = createSelectorFunctions(
           registry.getAddresses(),
           Promise.resolve(warpRouteConfigs), // registry.getWarpRoutes(),
           fetch(
-            'https://raw.githubusercontent.com/hyperlane-xyz/hyperlane-monorepo/refs/heads/main/typescript/sdk/src/consts/multisigIsm.ts',
+            'https://cdn.jsdelivr.net/gh/hyperlane-xyz/hyperlane-monorepo/typescript/sdk/src/consts/multisigIsm.ts',
           )
             .then((res) => res.text())
             .catch(() => null),
@@ -61,11 +63,30 @@ export const useStore = createSelectorFunctions(
         )
         .sort((a, b) => Number(a.chainId) - Number(b.chainId));
 
+      const routes = Object.entries(warpRoutes).flatMap(([routeId, route]) => {
+        return route.tokens.flatMap((tokenFrom) => {
+          return route.tokens
+            .flatMap((tokenTo) => {
+              if (tokenFrom === tokenTo) {
+                return null;
+              }
+
+              return {
+                id: routeId,
+                from: tokenFrom,
+                to: tokenTo,
+              } satisfies WarpRoute;
+            })
+            .filter(Boolean);
+        });
+      });
+
       const validators = validatorsFile ? parseValidators(validatorsFile) : {};
 
       set({
         isLoading: false,
         chains,
+        routes,
         addresses,
         warpRoutes,
         validators,

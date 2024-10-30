@@ -10,3 +10,9 @@ export interface ValidatorInfo {
   address: string;
   name: string;
 }
+
+export interface WarpRoute {
+  id: string;
+  from: WarpToken;
+  to: WarpToken;
+}

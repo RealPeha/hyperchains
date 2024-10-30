@@ -85,6 +85,9 @@ export const extraChainData: ChainMap<ExtraChainData> = {
   moonbeam: {
     addedAt: 1710873111000,
   },
+  scroll: {
+    addedAt: 1710873111000,
+  },
   neutron: {
     addedAt: 1710873111000,
   },
@@ -92,9 +95,6 @@ export const extraChainData: ChainMap<ExtraChainData> = {
     addedAt: 1710873111000,
   },
   scrollsepolia: {
-    addedAt: 1710873111000,
-  },
-  scroll: {
     addedAt: 1710873111000,
   },
   sepolia: {
@@ -286,7 +286,16 @@ export const extraChainData: ChainMap<ExtraChainData> = {
   astarzkevm: {
     addedAt: 1724679974000,
   },
+  b3: {
+    addedAt: 1724679974000,
+  },
+  arbitrumnova: {
+    addedAt: 1724679974000,
+  },
   bitlayer: {
+    addedAt: 1724679974000,
+  },
+  orderly: {
     addedAt: 1724679974000,
   },
   pulsechain: {
@@ -456,5 +465,29 @@ export const extraChainData: ChainMap<ExtraChainData> = {
   },
   mantapacifictestnet: {
     addedAt: 1729850720000,
+  },
+  gravity: {
+    addedAt: 1730130840000,
+  },
+  kaia: {
+    addedAt: 1730130840000,
+  },
+  apechain: {
+    addedAt: 1730130840000,
+  },
+  harmony: {
+    addedAt: 1730130840000,
+  },
+  morph: {
+    addedAt: 1730130840000,
+  },
+  zksync: {
+    addedAt: 1730130840000,
+  },
+  snaxchain: {
+    addedAt: 1730130840000,
+  },
+  zeronetwork: {
+    addedAt: 1730130840000,
   },
 };

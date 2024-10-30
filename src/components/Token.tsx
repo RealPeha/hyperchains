@@ -3,21 +3,25 @@ import React from 'react';
 import { Flex } from './Flex';
 import { Text } from './Text';
 import { ChainLogo } from './ChainLogo';
-import { getChainTags } from '../utils';
+import { getChainTags, getTokenLogoUrl } from '../utils';
 import { ChainTag } from '../constants';
 import { useStore } from '../store';
 import { WarpToken } from '../types';
 
 interface TokenProps {
   token: WarpToken;
-  withChain?: boolean;
+  withChain?: boolean | 'left' | 'right';
   size?: number;
+  textSize?: number;
+  onChainClick?: (token: WarpToken) => void;
 }
 
 export const Token: React.FC<TokenProps> = ({
   token,
   size = 20,
+  textSize,
   withChain = false,
+  onChainClick,
 }) => {
   const getChain = useStore.use.getChain();
 
@@ -38,21 +42,41 @@ export const Token: React.FC<TokenProps> = ({
     return `${explorer.url}/address/${token.addressOrDenom}`;
   };
 
+  const handleChainClick = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
+  ) => {
+    if (onChainClick) {
+      e.preventDefault();
+      onChainClick(token);
+    }
+  };
+
+  const symbolSize = textSize || size - 4;
+
   return (
     <Link href={getLinkToToken()} target="_blank">
       <Wrapper gap="5px" center>
-        {withChain && <ChainLogo chain={token.chainName} size={size} />}
+        {(withChain === true || withChain === 'left') && (
+          <ChainLogo
+            onClick={handleChainClick}
+            chain={token.chainName}
+            size={size}
+          />
+        )}
         <TokenLogo
           size={size}
           title={token.name}
-          src={
-            token.logoURI
-              ? `https://raw.githubusercontent.com/hyperlane-xyz/hyperlane-registry/main${token.logoURI}`
-              : 'https://chainlist.org/unknown-logo.png'
-          }
+          src={getTokenLogoUrl(token)}
           alt={token.symbol}
         />
-        <Text size={size - 4}>{token.symbol}</Text>
+        <EllipsisText size={symbolSize}>{token.symbol}</EllipsisText>
+        {withChain === 'right' && (
+          <ChainLogo
+            onClick={handleChainClick}
+            chain={token.chainName}
+            size={size}
+          />
+        )}
       </Wrapper>
     </Link>
   );
@@ -79,4 +103,11 @@ const TokenLogo = styled.img<{ size: number }>`
   width: ${(p) => p.size}px;
   height: ${(p) => p.size}px;
   border-radius: 50%;
+`;
+
+const EllipsisText = styled(Text)`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
 `;

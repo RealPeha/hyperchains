@@ -7,11 +7,18 @@ import { Flex } from './Flex';
 export interface SearchProps {
   value: string;
   onChange: (value: string) => void;
+  placeholder?: string;
+  className?: string;
 }
 
-export const Search: React.FC<SearchProps> = ({ value, onChange }) => {
+export const Search: React.FC<SearchProps> = ({
+  value,
+  onChange,
+  placeholder = '',
+  className,
+}) => {
   return (
-    <Wrapper center="y" gap="5px">
+    <Wrapper className={className} center="y" gap="5px">
       {value ? (
         <ClearIcon onClick={() => onChange('')} />
       ) : (
@@ -20,7 +27,7 @@ export const Search: React.FC<SearchProps> = ({ value, onChange }) => {
       <Input
         type="text"
         value={value}
-        placeholder="Search for chains..."
+        placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
       />
     </Wrapper>

@@ -57,7 +57,11 @@ export const ChainsHeader: React.FC<ChainsHeaderProps> = ({
         </Flex>
       </Flex>
       <Flex center="y" gap="10px">
-        <Search value={search} onChange={onSearchChange} />
+        <Search
+          value={search}
+          onChange={onSearchChange}
+          placeholder="Search for chains..."
+        />
         <TagSelect value={filterTags} onChange={onTagChange} />
       </Flex>
     </Header>
