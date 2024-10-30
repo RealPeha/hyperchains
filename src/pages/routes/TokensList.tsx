@@ -7,7 +7,6 @@ import { Search } from '../../components/Search';
 import { Text } from '../../components/Text';
 import { motion } from 'framer-motion';
 import { TokenRow } from './TokenRow';
-import { isAddress, isAddressEvm } from '@hyperlane-xyz/utils';
 
 interface TokensListProps {
   search: string;
