@@ -42,10 +42,14 @@ const run = async () => {
   } catch (e) {}
 
   console.log(
-    Object.fromEntries(
-      Object.entries(newExtraChainData).sort(
-        ([, a], [, b]) => a.addedAt - b.addedAt,
+    JSON.stringify(
+      Object.fromEntries(
+        Object.entries(newExtraChainData).sort(
+          ([, a], [, b]) => a.addedAt - b.addedAt,
+        ),
       ),
+      null,
+      2,
     ),
   );
 };
