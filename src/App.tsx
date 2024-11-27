@@ -4,7 +4,7 @@ import { useStore } from './store';
 import Chains from './pages/chains';
 import WarpRoutes from './pages/routes';
 
-useStore.getState().load();
+useStore.getState().init();
 
 export const App = () => {
   return (

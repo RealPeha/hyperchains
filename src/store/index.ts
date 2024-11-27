@@ -1,9 +1,5 @@
 import { GithubRegistry, warpRouteConfigs } from '@hyperlane-xyz/registry';
-import {
-  ChainMap,
-  ChainMetadata,
-  WarpCoreConfig,
-} from '@hyperlane-xyz/sdk';
+import { ChainMap, ChainMetadata, WarpCoreConfig } from '@hyperlane-xyz/sdk';
 import { ProtocolType } from '@hyperlane-xyz/utils';
 import { createSelectorFunctions } from 'auto-zustand-selectors-hook';
 import { create } from 'zustand';
@@ -17,7 +13,7 @@ interface Store {
   addresses: ChainMap<Record<string, string>>;
   warpRoutes: Record<string, WarpCoreConfig>;
 
-  load: () => Promise<void>;
+  init: () => Promise<void>;
 
   getChain: (chain: string) => ChainMetadata | undefined;
   getAddresses: (chain: string) => Record<string, string> | undefined;
@@ -35,17 +31,15 @@ export const useStore = createSelectorFunctions(
     routes: [],
     addresses: {},
     warpRoutes: {},
-    validators: {},
 
-    load: async () => {
+    init: async () => {
       const registry = new GithubRegistry();
 
-      const [metadata, addresses, warpRoutes] =
-        await Promise.all([
-          registry.getMetadata(),
-          registry.getAddresses(),
-          Promise.resolve(warpRouteConfigs), // registry.getWarpRoutes(),
-        ]);
+      const [metadata, addresses, warpRoutes] = await Promise.all([
+        registry.getMetadata(),
+        registry.getAddresses(),
+        Promise.resolve(warpRouteConfigs), // registry.getWarpRoutes(),
+      ]);
       const chains = Object.values(metadata)
         // Filter out EVM chains that don't have a mailbox address
         .filter((chain) =>
