@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { HTMLMotionProps, motion } from 'framer-motion';
 import { Flex } from '../Flex';
 import { Text } from '../Text';
-import { getChainTags } from '../../utils';
+import { getChainTags, getValidators } from '../../utils';
 import { Tag } from '../Tag';
 import { Scrollable } from '../Scrollable';
 import { ChainLogo } from '../ChainLogo';
@@ -45,7 +45,6 @@ export const ChainDetails = forwardRef<HTMLDivElement, ChainDetailsProps>(
   ({ chain }, ref) => {
     const getAddresses = useStore.use.getAddresses();
     const getWarpRoutes = useStore.use.getWarpRoutes();
-    const getValidators = useStore.use.getValidators();
 
     const [activeTab, setActiveTab] = useUrlState<TabId>('tab', 'info');
 
