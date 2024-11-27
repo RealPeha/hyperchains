@@ -1,5 +1,5 @@
 import { GithubRegistry, warpRouteConfigs } from '@hyperlane-xyz/registry';
-import type {
+import {
   ChainMap,
   ChainMetadata,
   WarpCoreConfig,
@@ -7,8 +7,7 @@ import type {
 import { ProtocolType } from '@hyperlane-xyz/utils';
 import { createSelectorFunctions } from 'auto-zustand-selectors-hook';
 import { create } from 'zustand';
-import { parseValidators } from '../utils';
-import { ValidatorInfo, WarpRoute } from '../types';
+import { WarpRoute } from '../types';
 
 interface Store {
   isLoading: boolean;
@@ -17,7 +16,6 @@ interface Store {
   routes: WarpRoute[];
   addresses: ChainMap<Record<string, string>>;
   warpRoutes: Record<string, WarpCoreConfig>;
-  validators: ChainMap<ValidatorInfo[]>;
 
   load: () => Promise<void>;
 
@@ -27,7 +25,6 @@ interface Store {
     warpRoutesArray: [string, WarpCoreConfig][];
     warpRoutes: Record<string, WarpCoreConfig>;
   };
-  getValidators: (chain: string) => ValidatorInfo[] | undefined;
 }
 
 export const useStore = createSelectorFunctions(
@@ -43,16 +40,11 @@ export const useStore = createSelectorFunctions(
     load: async () => {
       const registry = new GithubRegistry();
 
-      const [metadata, addresses, warpRoutes, validatorsFile] =
+      const [metadata, addresses, warpRoutes] =
         await Promise.all([
           registry.getMetadata(),
           registry.getAddresses(),
           Promise.resolve(warpRouteConfigs), // registry.getWarpRoutes(),
-          fetch(
-            'https://cdn.jsdelivr.net/gh/hyperlane-xyz/hyperlane-monorepo/typescript/sdk/src/consts/multisigIsm.ts',
-          )
-            .then((res) => res.text())
-            .catch(() => null),
         ]);
       const chains = Object.values(metadata)
         // Filter out EVM chains that don't have a mailbox address
@@ -81,15 +73,12 @@ export const useStore = createSelectorFunctions(
         });
       });
 
-      const validators = validatorsFile ? parseValidators(validatorsFile) : {};
-
       set({
         isLoading: false,
         chains,
         routes,
         addresses,
         warpRoutes,
-        validators,
       });
     },
     getChain: (chain) => {
@@ -97,9 +86,6 @@ export const useStore = createSelectorFunctions(
     },
     getAddresses: (chain) => {
       return get().addresses[chain];
-    },
-    getValidators: (chain) => {
-      return get().validators[chain];
     },
     getWarpRoutes: (chain) => {
       const warpRoutesArray = Object.entries(get().warpRoutes).filter(

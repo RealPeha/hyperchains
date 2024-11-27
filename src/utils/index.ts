@@ -1,4 +1,4 @@
 export * from './getChainTags';
+export * from './getValidators';
 export * from './shortenAddress';
-export * from './parseValidators';
 export * from './getTokenLogoUrl';
