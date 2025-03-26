@@ -18,6 +18,7 @@ const colors: Record<ChainTag, string> = {
   [ChainTag.EVM]: '#7f7e7e',
   [ChainTag.Solana]: '#9544c4',
   [ChainTag.Cosmos]: '#000a7d',
+  [ChainTag.Starknet]: '#1c4ac7',
   [ChainTag.All]: '#000',
 };
 
