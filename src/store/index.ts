@@ -5,6 +5,20 @@ import { createSelectorFunctions } from 'auto-zustand-selectors-hook';
 import { create } from 'zustand';
 import { WarpRoute } from '../types';
 
+class GithubRegistryWithoutHeaders extends GithubRegistry {
+  override async fetch(url: string): Promise<Response> {
+    this.logger.debug(`Fetching from github: ${url}`);
+    const response = await fetch(url);
+
+    if (!response.ok)
+      throw new Error(
+        `Failed to fetch from github: ${response.status} ${response.statusText}`,
+      );
+
+    return response;
+  }
+}
+
 interface Store {
   isLoading: boolean;
 
@@ -33,7 +47,7 @@ export const useStore = createSelectorFunctions(
     warpRoutes: {},
 
     init: async () => {
-      const registry = new GithubRegistry();
+      const registry = new GithubRegistryWithoutHeaders();
 
       const [metadata, addresses, warpRoutes] = await Promise.all([
         registry.getMetadata(),
