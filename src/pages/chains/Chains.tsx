@@ -85,7 +85,7 @@ export const Chains = () => {
     }
     // Otherwise, update with the new tags
     else {
-      setFilterTags(newTags);
+      setFilterTags(newTags.length ? newTags : [ChainTag.All]);
     }
   };
 
@@ -290,7 +290,8 @@ const Main = styled(Flex)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(at 27% 37%, #d631b9 0, transparent 50%),
+    background:
+      radial-gradient(at 27% 37%, #d631b9 0, transparent 50%),
       radial-gradient(at 97% 21%, #2764c1 0, transparent 50%),
       radial-gradient(at 27% 70%, #2764c1 0, transparent 50%),
       radial-gradient(at 77% 77%, #d631b9 0, transparent 50%);

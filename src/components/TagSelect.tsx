@@ -49,7 +49,7 @@ export const TagSelect: React.FC<TagSelectProps> = ({ value, onChange }) => {
             }}
             onClick={() => handleSelect(tag)}
           >
-            <TagStyled tag={tag} big={value.includes(tag)} />
+            <TagStyled tag={tag} isActive={value.includes(tag)} />
           </motion.div>
         ))}
       </Flex>

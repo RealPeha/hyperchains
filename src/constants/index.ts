@@ -11,12 +11,14 @@ export enum ChainTag {
   EVM = 'EVM',
   Solana = 'Solana',
   Cosmos = 'Cosmos',
+  Starknet = 'Starknet',
 }
 
 export const protocolToTag: Record<ProtocolType, ChainTag> = {
   [ProtocolType.Ethereum]: ChainTag.EVM,
   [ProtocolType.Sealevel]: ChainTag.Solana,
   [ProtocolType.Cosmos]: ChainTag.Cosmos,
+  [ProtocolType.Starknet]: ChainTag.Starknet,
 };
 
 export const tagToLabel: Record<ChainTag, string> = {
@@ -28,6 +30,7 @@ export const tagToLabel: Record<ChainTag, string> = {
   [ChainTag.EVM]: 'EVM',
   [ChainTag.Solana]: 'solana',
   [ChainTag.Cosmos]: 'cosmos',
+  [ChainTag.Starknet]: 'starknet',
 };
 
 export const extraChainData: ChainMap<ExtraChainData> = {
@@ -191,5 +194,5 @@ export const extraChainData: ChainMap<ExtraChainData> = {
   carrchaintestnet: { addedAt: 1741359344000 },
   infinityvmmonza: { addedAt: 1741359344000 },
   infinityvm: { addedAt: 1741877706000 },
-  plume: { addedAt: 1741877706000 }
+  plume: { addedAt: 1741877706000 },
 };
