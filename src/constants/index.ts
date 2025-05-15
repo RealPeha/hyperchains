@@ -18,6 +18,7 @@ export const protocolToTag: Record<ProtocolType, ChainTag> = {
   [ProtocolType.Ethereum]: ChainTag.EVM,
   [ProtocolType.Sealevel]: ChainTag.Solana,
   [ProtocolType.Cosmos]: ChainTag.Cosmos,
+  [ProtocolType.CosmosNative]: ChainTag.Cosmos,
   [ProtocolType.Starknet]: ChainTag.Starknet,
 };
 
