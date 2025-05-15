@@ -181,7 +181,11 @@ export const Chains = () => {
                     }}
                   >
                     <CartesianGrid />
-                    <XAxis dataKey="date" fontFamily="sans-serif" />
+                    <XAxis
+                      dataKey="date"
+                      fontFamily="sans-serif"
+                      interval={6}
+                    />
                     <YAxis fontFamily="sans-serif" />
                     <Tooltip />
                     <Line
